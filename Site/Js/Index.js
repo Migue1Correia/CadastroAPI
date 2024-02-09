@@ -1,37 +1,37 @@
 document.addEventListener('DOMContentLoaded', function(){
  
-    const pessoaList= document.getElementById('pessoa-lista');
+    const DoadorList= document.getElementById('Doador-lista');
  
     function renderTable(data){/*função para aparecer na tela */
         pessoaList.innerHTML='';
  
-        data.forEach(pessoa =>{
+        data.forEach(Doador =>{
             const row = document.createElement('tr');
             row.innerHTML= `
-<td>${pessoa.PesoaId}</td>
-<td>${pessoa.primeiroNome}</td>
-<td>${pessoa.nomeMeio}</td>
-<td>${pessoa.ultimonOme}</td>
-<td>${pessoa.cpf}</td>
+<td>${Doador.PesoaId}</td>
+<td>${Doador.primeiroNome}</td>
+<td>${Doador.nomeMeio}</td>
+<td>${Doador.ultimonOme}</td>
+<td>${Doador.cpf}</td>
 <td>
 <button>Editar</button>
 <button>Excluir</button>
 </td>
             `;
-            pessoaList.appendChild(row);
+            DoadorList.appendChild(row);
         })
     }
  
-    function feachPessoas(){
+    function feachDoador(){
         fetch("http://localhost:5055/api/Pessoas/GetAll")
         .then(response => response.json())
         .then(data => renderTable(data))
         .catch(error => console.error('Erro ao buscar dados da API'))
     }
-    feachPessoas();
+    feachDoador();
  
 })
-fetch('http://localhost:5055/api/Pessoas/Create',{
+fetch('http://localhost:5055/api/Doador/Create',{
  
 method: 'post',
 headers: {
